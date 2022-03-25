@@ -10,7 +10,9 @@ namespace Percolation
     {
         static void Main(string[] args)
         {
+            Percolation p = new Percolation(10);
 
+            
         }
     }
 }

@@ -75,8 +75,30 @@ namespace Percolation
 
         private void Open(int i, int j)
         {
+            List<KeyValuePair<int, int>> neighbors = CloseNeighbors(i, j);
+
             if (!IsOpen(i, j)) 
-                _open(i, j) = true;
+                _open[i, j] = true;
+
+            foreach (var neighbor in neighbors)
+            {
+                if (IsFull(neighbor.Key, neighbor.Value))
+                {
+                    _full[i, j] = true;
+                    break;
+                }
+            }
+
+            if (IsFull(i, j))
+            {
+                foreach (var neighbor in neighbors) 
+                {
+                    if (IsOpen(neighbor.Key, neighbor.Value) && !IsFull(neighbor.Key, neighbor.Value)) 
+                    {
+                        Open(neighbor.Key, neighbor.Value);
+                    }
+                }
+            }
         }
     }
 }
