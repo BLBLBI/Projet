@@ -37,9 +37,13 @@ namespace Percolation
 
         private bool Percolate()
         {
+            for (int i = 0; i < _size; i++)
+            {
+                if (IsFull(_size - 1, i))
+                    return true;
+            }
 
-
-            return 0;
+            return false;
         }
 
         private List<KeyValuePair<int, int>> CloseNeighbors(int i, int j)
