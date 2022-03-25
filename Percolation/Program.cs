@@ -10,6 +10,7 @@ namespace Percolation
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
