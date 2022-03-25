@@ -25,7 +25,7 @@ namespace Percolation
         public PclData MeanPercolationValue(int size, int t)
         {
             PclData data = new PclData();
-            double[] value = new double[size];
+            double[] value = new double[t];
             double std = 0d;
 
             for (int i = 0; i < t; i++)
@@ -42,6 +42,8 @@ namespace Percolation
 
             data.StandardDeviation = Math.Sqrt(std/size);
 
+            data.RelativeStd = data.StandardDeviation/data.Mean;
+
             return data;
         }
 
@@ -50,7 +52,7 @@ namespace Percolation
             Random rnd = new Random();
             Percolation p = new Percolation(size);
 
-            int open = 0;
+            double open = 0d;
             int x, y;
 
             while (!p.Percolate()) 
@@ -65,7 +67,7 @@ namespace Percolation
                 }
             }
 
-            return open/(size*size);
+            return open/(double)(size*size);
         }
     }
 }

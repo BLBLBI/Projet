@@ -77,21 +77,18 @@ namespace Percolation
         {
             List<KeyValuePair<int, int>> neighbors = CloseNeighbors(i, j);
 
-            if (!IsOpen(i, j))
-            {
-                _open[i, j] = true;
+            _open[i, j] = true;
 
-                if (i == 0)
-                    _full[i, j] = true;
-                else
+            if (i == 0)
+                _full[i, j] = true;
+            else
+            {
+                foreach (var neighbor in neighbors)
                 {
-                    foreach (var neighbor in neighbors)
+                    if (IsFull(neighbor.Key, neighbor.Value))
                     {
-                        if (IsFull(neighbor.Key, neighbor.Value))
-                        {
-                            _full[i, j] = true;
-                            break;
-                        }
+                        _full[i, j] = true;
+                        break;
                     }
                 }
             }
@@ -106,6 +103,14 @@ namespace Percolation
                     }
                 }
             }
+        }
+
+        /* j'étais pas sur au début qu'on puisse créer de nouvelles méthodes donc j'ai tout mis dans open()
+         * je voulais changer ça à la fin mais j'ai eu quelques problèmes puis plus le temps.
+         */
+        private void Flow()
+        {
+            
         }
     }
 }

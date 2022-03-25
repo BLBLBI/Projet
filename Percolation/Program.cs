@@ -10,9 +10,12 @@ namespace Percolation
     {
         static void Main(string[] args)
         {
-            Percolation p = new Percolation(10);
+            PercolationSimulation p = new PercolationSimulation();
+            PclData data = new PclData();
 
-            p.Open(2, 2);
+            data = p.MeanPercolationValue(5, 10);
+
+            Console.WriteLine($"mean {data.Mean} std {data.StandardDeviation} rstd {data.RelativeStd}");
         }
     }
 }
