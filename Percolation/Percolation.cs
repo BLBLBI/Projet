@@ -25,7 +25,7 @@ namespace Percolation
             _size = size;
         }
 
-        private bool IsOpen(int i, int j)
+        public bool IsOpen(int i, int j)
         {
             return _open[i,j];
         }
@@ -35,7 +35,7 @@ namespace Percolation
             return IsOpen(i, j) ? _full[i,j] : false;
         }
 
-        internal bool Percolate()
+        public bool Percolate()
         {
             for (int i = 0; i < _size; i++)
             {
@@ -73,7 +73,7 @@ namespace Percolation
             return neighbors;
         }
 
-        internal void Open(int i, int j)
+        public void Open(int i, int j)
         {
             List<KeyValuePair<int, int>> neighbors = CloseNeighbors(i, j);
 

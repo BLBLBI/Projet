@@ -24,7 +24,11 @@ namespace Percolation
     {
         public PclData MeanPercolationValue(int size, int t)
         {
-            throw new NotImplementedException();
+            PclData data = new PclData();
+
+
+
+            return data;
         }
 
         public double PercolationValue(int size)
@@ -32,7 +36,22 @@ namespace Percolation
             Random rnd = new Random();
             Percolation p = new Percolation(size);
 
-            return 0D;
+            int open = 0;
+            int x, y;
+
+            while (!p.Percolate()) 
+            {
+                x = rnd.Next(0, size);
+                y = rnd.Next(0, size);
+
+                if (!p.IsOpen(x, y))
+                {
+                    p.Open(x, y);
+                    open++;
+                }
+            }
+
+            return open/(size*size);
         }
     }
 }
