@@ -48,12 +48,35 @@ namespace Percolation
 
         private List<KeyValuePair<int, int>> CloseNeighbors(int i, int j)
         {
-            throw new NotImplementedException();
+            List<KeyValuePair<int, int>> neighbors = new List<KeyValuePair<int, int>>();
+
+            if (i > 0) 
+            {
+                neighbors.Add(new KeyValuePair<int, int>(i-1, j));
+            }
+
+            if (i < _size-1)
+            {
+                neighbors.Add(new KeyValuePair<int, int>(i+1, j));
+            }
+
+            if (j > 0) 
+            {
+                neighbors.Add(new KeyValuePair<int, int>(i, j-1));
+            }
+
+            if (j < _size-1)
+            {
+                neighbors.Add(new KeyValuePair<int, int>(i, j+1));
+            }
+
+            return neighbors;
         }
 
         private void Open(int i, int j)
         {
-            throw new NotImplementedException();
+            if (!IsOpen(i, j)) 
+                _open(i, j) = true;
         }
     }
 }
