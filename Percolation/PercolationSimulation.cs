@@ -25,8 +25,22 @@ namespace Percolation
         public PclData MeanPercolationValue(int size, int t)
         {
             PclData data = new PclData();
+            double[] value = new double[size];
+            double std = 0d;
 
+            for (int i = 0; i < t; i++)
+            {
+                value[i] = PercolationValue(size);
+            }
 
+            data.Mean = value.Average();
+
+            for (int i = 0; i < t; i++)
+            {
+                std = Math.Pow(data.Mean - value[i], 2);
+            }
+
+            data.StandardDeviation = Math.Sqrt(std/size);
 
             return data;
         }
