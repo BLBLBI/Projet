@@ -12,7 +12,7 @@ namespace Percolation
         {
             Percolation p = new Percolation(10);
 
-            
+            p.Open(2, 2);
         }
     }
 }

@@ -29,7 +29,10 @@ namespace Percolation
 
         public double PercolationValue(int size)
         {
-            throw new NotImplementedException();
+            Random rnd = new Random();
+            Percolation p = new Percolation(size);
+
+            return 0D;
         }
     }
 }
